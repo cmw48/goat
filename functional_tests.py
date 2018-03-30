@@ -21,7 +21,6 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do', header_text)
-        self.fail('Finish the test!')
 
         #enter a todo item
         # type a list item into a text box
@@ -36,10 +35,11 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
-        table = self.browser.find_element_by_id('id list table')
+        table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1. here is the first list item.' for row in rows)
+            any(row.text == '1. here is the first list item.' for row in rows),
+            'new to-do item did not appear in table'
         )
         ## TODO research generator expressions
 
