@@ -33,7 +33,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('here is the first list item.')
         # when enter is pressed, page updates
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(10)
+        time.sleep(3)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
@@ -45,6 +45,15 @@ class NewVisitorTest(unittest.TestCase):
 
         # list item appears in a todo list
         # enter another list item in text box
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('here is a second list item.')
+        # when enter is pressed, page updates
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(3)
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('2: here is a second list item.', [row.text for row in rows])
+
         # page updates, and both list items are displayed
         self.fail('Finish the test!')
         # page explains that a unique url has been created for this list
