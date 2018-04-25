@@ -15,7 +15,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         #user navigates to homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get('http://localhost:8080')
 
         #page title mentions to-do list
         self.assertIn('To-Do', self.browser.title)
@@ -33,7 +33,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('here is the first list item.')
         # when enter is pressed, page updates
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(10)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
