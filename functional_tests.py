@@ -39,8 +39,7 @@ class NewVisitorTest(unittest.TestCase):
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
             any(row.text == '1. here is the first list item.' for row in rows),
-            'new to-do item did not appear in table'
-        )
+            f"New to-do item did not appear in table.  Contents were:\n{table.text}""
         ## TODO research generator expressions
 
         # list item appears in a todo list
